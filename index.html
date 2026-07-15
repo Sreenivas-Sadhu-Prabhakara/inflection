@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self' data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'">
+  <title>inflection — understand the economy, one day at a time</title>
+  <meta name="description" content="A daily macroeconomics sensei: one hand-picked concept a day — inflation, interest, money supply, GDP — with an interactive model, a worked example, and how it hits your own money. Private, offline, ad-free.">
+  <meta name="color-scheme" content="dark light">
+  <link rel="canonical" href="https://sreenivas-sadhu-prabhakara.github.io/inflection/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Sreenivas Sadhu Prabhakara">
+  <meta name="keywords" content="macroeconomics, inflation, interest rates, money supply, money multiplier, central bank, GDP, unemployment, Phillips curve, real vs nominal, rule of 70, purchasing power, learn economics, economics daily">
+  <meta name="theme-color" content="#0C1116" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F4F1EA" media="(prefers-color-scheme: light)">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="inflection">
+  <meta property="og:title" content="inflection — understand the economy, one day at a time">
+  <meta property="og:description" content="A daily macroeconomics sensei: one hand-picked concept a day, with an interactive model you can play with and a worked example. Private, offline, ad-free.">
+  <meta property="og:url" content="https://sreenivas-sadhu-prabhakara.github.io/inflection/">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://sreenivas-sadhu-prabhakara.github.io/inflection/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="inflection — understand the economy, one day at a time">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="inflection — understand the economy, one day at a time">
+  <meta name="twitter:description" content="A daily macroeconomics sensei: one hand-picked concept a day, with an interactive model and a worked example. Private, offline, ad-free.">
+  <meta name="twitter:image" content="https://sreenivas-sadhu-prabhakara.github.io/inflection/og-image.png">
+  <meta name="twitter:image:alt" content="inflection — understand the economy, one day at a time">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <!-- Structured data (data block; not affected by script-src) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "inflection",
+    "description": "A daily macroeconomics learning app. Each calendar day it surfaces one hand-authored concept — inflation, interest rates, money supply, GDP, unemployment, and more — with an interactive teaching model, a worked numeric example, and a bridge to your own money. Runs fully offline; nothing is transmitted.",
+    "url": "https://sreenivas-sadhu-prabhakara.github.io/inflection/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any (modern web browser)",
+    "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+    "isAccessibleForFree": true,
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "license": "https://opensource.org/licenses/MIT",
+    "author": { "@type": "Person", "name": "Sreenivas Sadhu Prabhakara" },
+    "softwareVersion": "0.1.0",
+    "featureList": [
+      "A date-seeded concept of the day, the same for everyone on a given date",
+      "Interactive teaching models with keyboard-operable sliders and live readouts",
+      "A worked numeric example with the arithmetic shown for every concept",
+      "A learning streak and a mark-as-learned tracker kept only on your device",
+      "Browse, filter by area, and shuffle a curated corpus of macro & money concepts",
+      "Runs 100% offline with no accounts and no network calls"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is inflection free & offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. inflection is free, has no ads or accounts, and runs entirely in your browser. A strict Content-Security-Policy blocks every network request, so once the page has loaded it keeps working with no internet at all. Your streak and learned concepts are saved only in your browser's local storage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does inflection use live data or AI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The concepts are a hand-authored, curated corpus, and the daily pick is chosen by a deterministic date-seed — the same concept shows for everyone on a given calendar date. There is no live market data, no server, and no AI generating text at runtime. The interactive models are simplified teaching abstractions, not live simulations or forecasts."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is any of this financial advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. inflection is an educational tool. Every model is a simplified, ceteris-paribus abstraction meant to build intuition, and none of the worked examples are recommendations. Nothing here is financial, investment, tax, or legal advice — consult a qualified professional before making money decisions."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#today">Skip to today's concept</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="masthead" id="top">
+    <div class="masthead__grid" aria-hidden="true">
+      <svg class="plot" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMid slice" role="presentation">
+        <g class="plot__grid"></g>
+        <path class="plot__curve" d=""></path>
+        <circle class="plot__dot" r="5"></circle>
+      </svg>
+    </div>
+
+    <div class="masthead__inner">
+      <div class="brand">
+        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M4 26 L13 17 L19 21 L28 8" fill="none" stroke="#E8B23A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="13" cy="17" r="2.3" fill="#3FB0A0"/>
+        </svg>
+        <span class="brand__name">inflection</span>
+      </div>
+
+      <div class="streak" id="streakBadge" aria-live="polite">
+        <span class="streak__flame" aria-hidden="true">▲</span>
+        <span class="streak__count" id="streakCount">0</span>
+        <span class="streak__label">day streak</span>
+      </div>
+    </div>
+
+    <div class="masthead__tag">
+      <p class="eyebrow">Daily macroeconomics &middot; money &amp; markets &middot; offline</p>
+      <h1 class="masthead__title">Understand the economy,<br><span class="masthead__accent">one day at a time.</span></h1>
+      <p class="masthead__lede">
+        Every day, one hand-picked idea about <em>inflation, interest, money and growth</em> —
+        with a model you can actually play with, the arithmetic worked out, and a plain line to
+        how it moves <em>your</em> money. No accounts, no network, no noise.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ TODAY (hero concept) ============ -->
+    <section class="today" id="today" aria-labelledby="todayHeading">
+      <div class="today__inner">
+        <div class="today__ribbon">
+          <span class="today__date" id="todayDate">Today</span>
+          <h2 class="today__kicker" id="todayHeading">Concept of the day</h2>
+        </div>
+        <article class="concept concept--hero" id="conceptCard" aria-live="polite"></article>
+
+        <nav class="deck" aria-label="Browse concepts">
+          <button type="button" class="btn btn--ghost" id="prevBtn">&larr; Prev</button>
+          <button type="button" class="btn btn--ghost" id="shuffleBtn">Surprise me</button>
+          <button type="button" class="btn btn--ghost" id="todayBtn">Back to today</button>
+          <button type="button" class="btn btn--ghost" id="nextBtn">Next &rarr;</button>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============ LIBRARY ============ -->
+    <section class="library" id="library" aria-labelledby="libHeading">
+      <div class="library__head">
+        <h2 class="library__title" id="libHeading">The corpus</h2>
+        <p class="library__meta" id="libMeta"></p>
+      </div>
+
+      <div class="filters" id="filters" role="group" aria-label="Filter by area"></div>
+
+      <ul class="grid" id="conceptGrid" aria-label="All concepts"></ul>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="foot">
+    <div class="foot__inner">
+      <p class="foot__disclaimer">
+        <strong>Educational, not advice.</strong> inflection is a hand-authored teaching corpus with a
+        deterministic daily pick — <em>not</em> live data, not AI, not a market feed. The interactive
+        models are simplified, ceteris-paribus abstractions built to grow intuition; they are illustrative,
+        not forecasts. Nothing here is financial, investment, tax, or legal advice.
+      </p>
+      <p class="foot__meta">
+        <span>Works 100% offline</span><span class="foot__dot">&middot;</span>
+        <span>No network, no accounts</span><span class="foot__dot">&middot;</span>
+        <span>MIT&nbsp;License</span><span class="foot__dot">&middot;</span>
+        <span>&copy; 2026 Sreenivas&nbsp;Sadhu&nbsp;Prabhakara</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
