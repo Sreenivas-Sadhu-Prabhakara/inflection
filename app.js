@@ -105,11 +105,11 @@
       }
       // axis labels
       if (opts.xLabel) {
-        var axl = make("text", { x: padL + plotW / 2, y: H - 1, "text-anchor": "middle", fill: "var(--faint)", "font-size": 11 });
+        var axl = make("text", { x: padL + plotW / 2, y: H - 1, "text-anchor": "middle", fill: "var(--mute)", "font-size": 11 });
         axl.textContent = opts.xLabel; g.appendChild(axl);
       }
       if (opts.yLabel) {
-        var ayl = make("text", { x: 12, y: padT + plotH / 2, "text-anchor": "middle", fill: "var(--faint)", "font-size": 11, transform: "rotate(-90 12 " + (padT + plotH / 2) + ")" });
+        var ayl = make("text", { x: 12, y: padT + plotH / 2, "text-anchor": "middle", fill: "var(--mute)", "font-size": 11, transform: "rotate(-90 12 " + (padT + plotH / 2) + ")" });
         ayl.textContent = opts.yLabel; g.appendChild(ayl);
       }
       svg.appendChild(g);

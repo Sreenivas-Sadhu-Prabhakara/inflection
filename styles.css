@@ -482,7 +482,7 @@ select:focus-visible,
   transform: rotate(45deg) translate(-0.5px, -1px);
 }
 .learn-toggle input:checked ~ .learn-toggle__label { color: var(--paper); }
-.concept__id { font-family: var(--mono); font-size: 0.76rem; color: var(--faint); }
+.concept__id { font-family: var(--mono); font-size: 0.76rem; color: var(--mute); }
 
 /* deck nav */
 .deck {
